@@ -26,6 +26,7 @@
 		<zookeeper.version>3.4.13</zookeeper.version>
 		<zkclient.version>0.1</zkclient.version>
 		<apache.curator.version>4.0.0</apache.curator.version>
+		<jackson.version>2.7.4</jackson.version>
 	</properties>
 
 	<dependencies>
@@ -76,6 +77,23 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 			<version>${apache.curator.version}</version>
+		</dependency>
+
+		<!-- Jackson Json处理工具包 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 	</dependencies>
 
