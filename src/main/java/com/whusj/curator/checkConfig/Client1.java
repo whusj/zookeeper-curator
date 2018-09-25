@@ -3,6 +3,7 @@ package com.whusj.curator.checkConfig;
 import com.sun.deploy.util.SessionState;
 import com.whusj.utils.JsonUtils;
 import com.whusj.utils.RedisConfig;
+import com.whusj.utils.StringUtil;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
@@ -17,7 +18,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class Client1 {
     public CuratorFramework client = null;
-    public static final String zkServerPath = "";
+    public static final String zkServerPath = "192.168.202.61:2181,192.168.202.62:2181,192.168.202.63:2181";
 
     public Client1() {
         RetryPolicy retryPolicy = new RetryNTimes(3,5000);
@@ -62,7 +63,7 @@ public class Client1 {
 
                         //从json转换配置
                         RedisConfig redisConfig = null;
-                        if(StringUtils.isNotBlank(jsonConfig)){
+                        if(StringUtil.isNotBlank(jsonConfig)){
                             redisConfig = JsonUtils.jsonToPojo(jsonConfig, RedisConfig.class);
                         }
 
@@ -99,14 +100,12 @@ public class Client1 {
                                 System.out.println("监听到需要删除配置文件");
                                 System.out.println("删除项目中原配置文件...");
                             }
-
                             //TODO:视情况重启相应的服务
                         }
                     }
                 }
             }
         });
-
+        countDown.await();
     }
-
 }
