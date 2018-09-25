@@ -1,1 +1,2 @@
-Zookeeper-Curator案例
+Zookeeper-Curator实例
+Watcher实例，实现统一更新N台节点的Redis配置文件
